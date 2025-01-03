@@ -20,9 +20,11 @@ document.getElementById("search-button").addEventListener("click", () => {
         })
         .then(data => {
             if (data.error) {
-                alert(data.error);
+                document.getElementById("error-message").style.display = 'block';
+                document.getElementById("error-message").textContent = data.error;
             } else {
                 displayElementData(data);
+                document.getElementById("error-message").style.display = 'none';
             }
         })
         .catch(error => {
@@ -30,7 +32,8 @@ document.getElementById("search-button").addEventListener("click", () => {
             alert("An error occurred while fetching element data.");
         });
 });
-document.getElementById('bohr-button').addEventListener('click', function() {
+
+document.getElementById('bohr-button').addEventListener('click', function () {
     const elementInput = document.getElementById('element-input').value;
 
     if (!elementInput) {
@@ -55,20 +58,6 @@ document.getElementById('bohr-button').addEventListener('click', function() {
         });
 });
 
-function displayBohrModelImage(imageUrl) {
-    const imageContainer = document.getElementById("bohr-model-container");
-    
-    // Clear any previous image
-    imageContainer.innerHTML = "";
-
-    // Create an img element to display the image
-    const imgElement = document.createElement("img");
-    imgElement.src = imageUrl;  // Set the image source to the generated image URL
-    imgElement.alt = "Bohr Model Image";
-
-    // Append the image to the container
-    imageContainer.appendChild(imgElement);
-}
 document.querySelectorAll(".orbital-button").forEach(button => {
     button.addEventListener("click", () => {
         const orbitalType = button.getAttribute("data-orbital");
@@ -100,9 +89,13 @@ function displayElementData(data) {
     document.getElementById("element-summary").textContent = data.summary || "No summary available.";
     const detailsList = document.getElementById("element-details");
     detailsList.innerHTML = ""; // Clear previous details
-    for (const [key, value] of Object.entries(data.details)) {
-        const listItem = document.createElement("li");
-        listItem.textContent = `${key}: ${value}`;
-        detailsList.appendChild(listItem);
+    if (data.details) {
+        for (const [key, value] of Object.entries(data.details)) {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${key}: ${value}`;
+            detailsList.appendChild(listItem);
+        }
+    } else {
+        detailsList.innerHTML = "<li>No detailed data available.</li>";
     }
 }
