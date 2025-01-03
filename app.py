@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import logging
-from element_logic import (
+from app.element_logic import (
     fetch_element_data,
     generate_bohr_model,
     generate_orbital_visualization,
