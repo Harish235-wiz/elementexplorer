@@ -47,6 +47,7 @@ def search_element():
         # Get the element name from the request
         data = request.get_json()
         element_name = data.get('elementName')
+        print(f"Received element name: {element_name}")  # Add this line for debugging
         if not element_name:
             return jsonify({"error": "Element name is required."}), 400
         
@@ -61,6 +62,7 @@ def search_element():
     except Exception as e:
         logging.error(f"Error in /search: {str(e)}")
         return jsonify({"error": "An error occurred while fetching element data."}), 500
+
 
 @app.route('/bohr_model/<element>', methods=['GET'])
 def bohr_model(element):
