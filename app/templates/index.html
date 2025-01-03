@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Explorer</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Element Explorer</h1>
+        <div class="search-section">
+            <input type="text" id="element-input" placeholder="Enter element name">
+            <button id="search-button">Search</button>
+        </div>
+        <div class="results-section">
+            <h2>General Summary</h2>
+            <p id="element-summary">Summary will appear here.</p>
+            <h2>Detailed Data</h2>
+            <ul id="element-details"></ul>
+        </div>
+        <div class="visualization-section">
+            <h2>Visualizations</h2>
+            <div class="buttons-container">
+                <button id="bohr-button">Generate Bohr Model</button>
+                <button class="orbital-button" data-orbital="s">S Orbital</button>
+                <button class="orbital-button" data-orbital="p">P Orbital</button>
+                <button class="orbital-button" data-orbital="d">D Orbital</button>
+                <button class="orbital-button" data-orbital="f">F Orbital</button>
+            </div>
+        </div>
+        <!-- Bohr Model Display Section -->
+        <div id="bohr-model-container" class="bohr-model-container">
+            <!-- The Bohr model image will be displayed here after generation -->
+        </div>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
+<footer>
+    <p class="team-name">Team: Harish Raghav. V, Rohith. K, Mitun. R</p>
+    <p class="catchphrase">Unlocking the mysteries of elements, one atom at a time. An educational and research tool for all ages.</p>
+</footer>
