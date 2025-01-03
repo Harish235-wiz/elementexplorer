@@ -12,28 +12,26 @@ document.getElementById("search-button").addEventListener("click", () => {
         },
         body: JSON.stringify({ elementName: elementName }),
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error: ${response.statusText}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.error) {
-                document.getElementById("error-message").style.display = 'block';
-                document.getElementById("error-message").textContent = data.error;
-            } else {
-                displayElementData(data);
-                document.getElementById("error-message").style.display = 'none';
-            }
-        })
-        .catch(error => {
-            console.error(error);
-            alert("An error occurred while fetching element data.");
-        });
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.error) {
+            alert(data.error);
+        } else {
+            displayElementData(data);
+        }
+    })
+    .catch(error => {
+        console.error(error);
+        alert("An error occurred while fetching element data.");
+    });
 });
 
-document.getElementById('bohr-button').addEventListener('click', function () {
+document.getElementById('bohr-button').addEventListener('click', function() {
     const elementInput = document.getElementById('element-input').value;
 
     if (!elementInput) {
@@ -65,23 +63,23 @@ document.querySelectorAll(".orbital-button").forEach(button => {
         fetch(`/visualize_orbital/${orbitalType}`, {
             method: 'GET',
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Error: ${response.statusText}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.error) {
-                    alert(data.error);
-                } else {
-                    alert(data.message);  // Show the message returned from the backend
-                }
-            })
-            .catch(error => {
-                console.error(error);
-                alert("An error occurred while generating the orbital visualization.");
-            });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                alert(data.message);  // Show the message returned from the backend
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            alert("An error occurred while generating the orbital visualization.");
+        });
     });
 });
 
@@ -89,13 +87,8 @@ function displayElementData(data) {
     document.getElementById("element-summary").textContent = data.summary || "No summary available.";
     const detailsList = document.getElementById("element-details");
     detailsList.innerHTML = ""; // Clear previous details
-    if (data.details) {
-        for (const [key, value] of Object.entries(data.details)) {
-            const listItem = document.createElement("li");
-            listItem.textContent = `${key}: ${value}`;
-            detailsList.appendChild(listItem);
-        }
-    } else {
-        detailsList.innerHTML = "<li>No detailed data available.</li>";
-    }
+    for (const [key, value] of Object.entries(data.details)) {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${key}: ${value}`;
+        detailsList.appendChild(listItem);
 }
