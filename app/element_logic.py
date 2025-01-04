@@ -16,17 +16,30 @@ PERIODIC_TABLE = {
     "Sulfur": 16, "Chlorine": 17, "Argon": 18, "Potassium": 19, "Calcium": 20,
     # Add more as needed
 }
+#fetch wikipedia summary
+import wikipedia
 
-# Fetch Wikipedia Summary
+
 def fetch_wikipedia_summary(element_name):
-    wiki = wikipediaapi.Wikipedia(language="en", user_agent="ElementExplorer/1.0 (contact@example.com)")
-    page = wiki.page(element_name)
-    if page.exists():
-        summary = page.summary[:2000]
-        if "." in summary[1990:]:
-            return summary[:summary[:2000].rfind(".") + 1]
+    try:
+        # Fetch the Wikipedia summary for the element
+        summary = wikipedia.summary(element_name, sentences=10)  # Fetch a default number of sentences
+        if len(summary) > 1500:
+            # Truncate the summary to the first 1500 characters or until a full stop
+            summary = summary[:1500]
+            # Look for the last full stop within the 1500 character limit
+            last_period = summary.rfind('.')
+            if last_period != -1:
+                summary = summary[:last_period+1]  # Include the full stop in the summary
         return summary
-    return "No summary available."
+    except wikipedia.exceptions.DisambiguationError as e:
+        return f"Disambiguation error: {e.options}"
+    except wikipedia.exceptions.HTTPTimeoutError:
+        return "Error: Wikipedia request timed out."
+    except wikipedia.exceptions.RedirectError:
+        return "Error: Redirect error occurred."
+    except Exception as e:
+        return f"Error: {str(e)}"
 
 # Fetch Element Data from Mendeleev Library
 def fetch_mendeleev_data(element_name):
@@ -50,15 +63,28 @@ def fetch_mendeleev_data(element_name):
 # Fetch PubChem Data
 def fetch_pubchem_data(element_name):
     try:
-        compound = get_compounds(element_name, 'name')[0]
-        data = {
-            "Molecular Weight": f"{compound.molecular_weight:.2f} u",
-            "InChI Key": compound.inchikey,
-            "SMILES": compound.isomeric_smiles,
-        }
-        return data
-    except Exception:
-        return {}
+        compounds = get_compounds(element_name, 'name')
+        if compounds:
+            compound = compounds[0]
+            molecular_weight = compound.molecular_weight
+            # Attempt to convert to float if it's a valid number
+            try:
+                molecular_weight = float(molecular_weight)
+            except ValueError:
+                molecular_weight = None  # Set to None if conversion fails
+
+            data = {
+                "Molecular Weight": f"{molecular_weight:.2f} u" if molecular_weight else "N/A",
+                "InChI Key": compound.inchikey if compound.inchikey else "N/A",
+                "SMILES": compound.isomeric_smiles if compound.isomeric_smiles else "N/A",
+            }
+            return data
+        else:
+            return {"error": f"No compounds found for {element_name}"}
+    except Exception as e:
+        return {"error": f"Failed to fetch PubChem data: {str(e)}"}
+
+
 
 # Combine Data Fetchers
 def fetch_element_data(element_name):

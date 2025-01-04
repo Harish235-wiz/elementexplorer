@@ -1,10 +1,10 @@
 /* General Body Styling */
 body {
-    font-family: 'Times New Roman', Times, serif; /* Changed font to Times New Roman */
-    background: linear-gradient(135deg, #4A90E2, #50E3C2); /* More academic color gradient */
+    font-family: 'Comic Sans MS', 'Arial', sans-serif; /* Using a font that's attention-grabbing and playful */
+    background-color: #A7C6ED; /* A light, professional blue shade */
     margin: 0;
     padding: 0;
-    color: #fff;
+    color: #333;
     line-height: 1.6;
 }
 
@@ -13,31 +13,28 @@ body {
     max-width: 900px;
     margin: 50px auto;
     padding: 30px;
-    background: #ffffff;
+    background: #F0F4F8; /* Light shade of blue for the result box */
     color: #333;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .container:hover {
     transform: scale(1.01);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 /* Heading */
 h1 {
     text-align: center;
     font-size: 3em;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Changed heading font to a more professional font */
+    font-family: 'Comic Sans MS', 'Arial', sans-serif; /* Using Comic Sans for the heading to keep the playful look */
     font-weight: bold;
-    color: #333;
+    color: #1F3A64;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    background: linear-gradient(90deg, #0288D1, #8E24AA); /* More professional gradient */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 /* Search Form */
@@ -51,46 +48,45 @@ form {
 input {
     padding: 15px;
     width: 70%;
-    font-size: 1em;
-    border: 2px solid #ddd;
+    font-size: 1.2em;
+    border: 2px solid #1F3A64; /* Matching the color to the heading for uniformity */
     border-radius: 8px;
     outline: none;
     transition: border-color 0.3s;
 }
 
 input:focus {
-    border-color: #0288D1;
-    box-shadow: 0 0 5px rgba(2, 136, 209, 0.5);
+    border-color: #FF8C00; /* Highlight with orange for attention */
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
 }
 
 button {
     padding: 15px 20px;
-    font-size: 1em;
+    font-size: 1.2em;
     border: none;
-    background: linear-gradient(90deg, #ff6a00, #ee0979);
+    background-color: #FF8C00; /* Orange for interactivity */
     color: white;
     border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.3s, background 0.3s;
+    transition: transform 0.3s, background-color 0.3s;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 button:hover {
     transform: translateY(-3px);
-    background: linear-gradient(90deg, #ee0979, #ff6a00);
+    background-color: #D97F00; /* Darker orange when hovered */
 }
 
 /* Results Section */
 #result {
     margin-top: 30px;
     padding: 20px;
-    background: #f8f9fa;
-    border: 2px solid #ddd;
+    background-color: #F0F4F8; /* Light blue shade */
+    border: 2px solid #1F3A64;
     border-radius: 8px;
     color: #333;
-    font-family: 'Courier New', monospace; /* Distinct font for result text */
+    font-family: 'Comic Sans MS', sans-serif;
     font-size: 1.1em;
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -108,15 +104,15 @@ button:hover {
     padding: 12px 20px;
     font-size: 1em;
     border-radius: 8px;
-    border: 2px solid #0288D1;
+    border: 2px solid #1F3A64;
     background: transparent;
-    color: #0288D1;
+    color: #1F3A64;
     font-weight: bold;
     transition: background 0.3s, color 0.3s;
 }
 
 #visualizationButtons button:hover {
-    background: #0288D1;
+    background: #1F3A64;
     color: #fff;
 }
 
@@ -141,17 +137,17 @@ button:hover {
 footer {
     text-align: center;
     margin-top: 50px;
-    font-size: 1em;
+    font-size: 1.1em;
     color: #333;
 }
 
 footer .team-name {
     font-weight: bold;
-    color: #0288D1;
+    color: #1F3A64;
 }
 
 footer .catchphrase {
     margin-top: 10px;
     font-style: italic;
-    color: #888;
+    color: #FF8C00; /* Contrasting color for the catchphrase */
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Explorer</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">Element Explorer</h1>
+            <p class="subtitle">Unlocking the mysteries of elements, one atom at a time. An educational and research tool for all ages.</p>
+        </header>
+
+        <section class="search-section">
+            <h2>Search for an Element</h2>
+            <input type="text" id="element-input" placeholder="Enter element name or symbol" />
+            <button id="search-button">Search</button>
+        </section>
+
+        <section class="results-section">
+            <div class="summary-container">
+                <h2>General Summary</h2>
+                <p id="element-summary">Summary will appear here.</p>
+            </div>
+            <div class="details-container">
+                <h2>Detailed Data</h2>
+                <ul id="element-details">
+                    <!-- Element details will be dynamically inserted here -->
+                </ul>
+            </div>
+            <p id="error-message" style="color: red; display: none;"></p>
+        </section>
+
+        <section class="visualization-section">
+            <h2>Visualizations</h2>
+            <div class="buttons-container">
+                <button id="bohr-button">Generate Bohr Model</button>
+                <button class="orbital-button" data-orbital="s">S Orbital</button>
+                <button class="orbital-button" data-orbital="p">P Orbital</button>
+                <button class="orbital-button" data-orbital="d">D Orbital</button>
+                <button class="orbital-button" data-orbital="f">F Orbital</button>
+            </div>
+            <div id="bohr-model-container" class="bohr-model-container">
+                <!-- Bohr model visualization will be displayed here -->
+            </div>
+            <div id="orbital-visualization-container" class="orbital-visualization-container">
+                <!-- Orbital visualization will be displayed here -->
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p class="team-name">Team: Harish Raghav. V, Rohith. K, Mitun. R</p>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>
