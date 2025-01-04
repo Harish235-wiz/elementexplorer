@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from element_logic import fetch_element_data, generate_bohr_model, generate_orbital_visualization
+from app.element_logic import fetch_element_data, generate_bohr_model, generate_orbital_visualization
 import logging
 
 app = Flask(__name__)
