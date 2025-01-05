@@ -1,4 +1,4 @@
-Flask==2.2.2
+Flask>=2.0.0
 beautifulsoup4==4.12.3
 mendeleev==0.20.0
 numpy>=1.21,<2.0
