@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from app.element_logic import fetch_element_data, generate_bohr_model, generate_orbital_visualization
+from element_logic import fetch_element_data, generate_bohr_model, generate_orbital_visualization
 import logging
 
 app = Flask(__name__)
@@ -175,4 +175,5 @@ def visualize_orbital(orbital_type):
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
+
